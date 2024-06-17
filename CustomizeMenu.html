@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> JUMP FROG</title>
+    <link rel="stylesheet" href="CSS/stylesheet.css">
+    </head>
+    <body>
+        <div class="container"> 
+            <img src="Images/Customize.png" alt="customize" width="360" height="640">
+            <button class="colorsBtn" onclick="chooseColorPage()">Colors</button>
+            <button class="clothesBtn" onclick="chooseClothesPage()">Clothes</button>
+            <button class="btnBack" onclick="returnHome()">Back</button>
+        </div>
+        
+   
+</body>
+
+    <script>
+
+        function returnHome(){
+           window.location.href ="JumpFroghome.html";
+           
+    }
+
+        function chooseColorPage(){
+            window.location.href = "ColorsPage.html";
+
+        }
+
+    
+
+        function chooseClothesPage(){
+            window.location.href = "ClothesPage.html";
+
+}
+    </script>
+
+    </body>
+    </html>

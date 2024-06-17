@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="UTF-8">
+           <title> JUMP FROG </title>
+           <link rel="stylesheet" href="CSS/stylesheet.css">
+           
+        <style>
+             .btnPause{
+               border-radius: 50%; 
+               height: 50px;
+               width: 50px;
+               background-color:#038a81;
+               border: none;
+               position: absolute;
+               top: 75px;
+               left: 630px;
+               font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+               font-weight: 600;
+               font-stretch: condensed;
+               font-size: 16px;
+               cursor: pointer;
+               transform: translate(-50%, -50%);
+               transition-duration: 0.4s; 
+            }
+            
+            
+            
+            
+            canvas{
+                top: 0px;
+                bottom: 0px;
+                left: 0px;
+                right: 0px;
+                margin: auto;
+                position: fixed;
+            }
+
+
+           
+        </style>
+    </head>
+
+    
+
+
+
+    <body>
+       <div>
+          <button class="btnPause" onclick="pauseGameScreen()">Pause</button>
+          </button>
+        </div>
+         <script>
+
+            function returnHome(){
+               window.location.href ="JumpFroghome.html";
+            }
+
+            function pauseGameScreen(){
+               window.location.href ="PauseGame.html"
+            }   
+            
+            var canvas, ctx, ALTURA, LARGURA;
+
+            var papelDeParede = new function(){
+                this.background = new Image();
+                this.background.src = "Images/waterfallbg.png";
+                  
+            }
+
+            var sapinho = new function() {
+                this.sprite = new Image();
+                this.sprite.src = "Images/Orangeback.png";
+            }
+           
+           
+            fundo = {
+                altura: ALTURA,
+                largura: LARGURA,
+                render: function() {
+                    ctx.drawImage(papelDeParede.background, 0, 0);
+                }
+            }
+
+            jogador = {
+                y:500,
+                x:110,
+                altura: 118,
+                largura: 139,
+             
+                render: function() {
+                    ctx.drawImage(sapinho.sprite, this.x, this.y);
+                }
+
+            }
+
+           
+            chao = {
+                y:600,
+                altura: 40,
+                largura: LARGURA,
+                render: function(){
+                    ctx.fillRect(0, this.y, this.largura, this.altura);
+                }
+            }
+
+            
+            function renderGame() {
+                fundo.render();
+                jogador.render();
+                chao.render ();
+                window.requestAnimationFrame(renderGame);
+                      
+            }
+
+          
+            
+
+            
+            function gameOver() { }
+            
+            function processUserInput() { }
+
+            function updateGame() { }
+            
+            function gameLoop() {
+                gameOver();
+                processUserInput();
+                updateGame();
+                renderGame();
+                window.requestAnimationFrame(gameLoop);     
+
+            }
+
+            function main() {
+
+                LARGURA = 360;
+                ALTURA = 640;
+               
+                canvas = document.createElement("canvas");
+
+                canvas.width = LARGURA;
+                canvas.height = ALTURA;
+
+                ctx = canvas.getContext("2d");
+
+                document.body.appendChild(canvas);
+
+                gameLoop();
+            }
+
+            main();
+            
+        </script>
+
+
+
+
+
+
+    </body>  
+
+
+
+
+
+
+
+
+
+
+
+</html>
